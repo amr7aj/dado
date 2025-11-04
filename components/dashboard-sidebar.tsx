@@ -1,6 +1,18 @@
 "use client"
 
-import { Scale, Calendar, Users, Bell, Settings, LayoutDashboard, Menu, X } from "lucide-react"
+import {
+  Scale,
+  Calendar,
+  Users,
+  Bell,
+  Settings,
+  LayoutDashboard,
+  Menu,
+  X,
+  Briefcase,
+  CheckSquare,
+  User,
+} from "lucide-react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
@@ -9,9 +21,12 @@ import { Button } from "@/components/ui/button"
 
 const menuItems = [
   { icon: LayoutDashboard, label: "لوحة التحكم", href: "/dashboard" },
+  { icon: Briefcase, label: "القضايا", href: "/dashboard/cases" },
   { icon: Calendar, label: "الأجندة", href: "/dashboard/agenda" },
+  { icon: CheckSquare, label: "المهام", href: "/dashboard/tasks" },
   { icon: Users, label: "العملاء", href: "/dashboard/clients" },
   { icon: Bell, label: "التنبيهات", href: "/dashboard/notifications" },
+  { icon: User, label: "الملف الشخصي", href: "/dashboard/profile" },
   { icon: Settings, label: "الإعدادات", href: "/dashboard/settings" },
 ]
 
@@ -50,7 +65,7 @@ export function DashboardSidebar() {
             </div>
             <div>
               <h2 className="font-bold text-lg text-primary">أجندة المحامي</h2>
-              <p className="text-xs text-muted-foreground">نظام إدارة المواعيد</p>
+              <p className="text-xs text-muted-foreground">نظام إدارة شامل</p>
             </div>
           </div>
         </div>

@@ -1,9 +1,9 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { Cairo } from "next/font/google"
-import { Analytics } from "@vercel/analytics/next"
 import { AuthProvider } from "@/lib/auth-context"
 import { AppointmentsProvider } from "@/lib/appointments-context"
+import { DataProvider } from "@/lib/data-context"
 import { ThemeProvider } from "@/lib/theme-context"
 import "./globals.css"
 
@@ -25,10 +25,11 @@ export default function RootLayout({
       <body className={`${cairo.className} antialiased`}>
         <ThemeProvider>
           <AuthProvider>
-            <AppointmentsProvider>{children}</AppointmentsProvider>
+            <AppointmentsProvider>
+              <DataProvider>{children}</DataProvider>
+            </AppointmentsProvider>
           </AuthProvider>
         </ThemeProvider>
-        <Analytics />
       </body>
     </html>
   )
