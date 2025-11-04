@@ -27,9 +27,9 @@ export function DashboardHeader() {
   }
 
   return (
-    <header className="border-b border-border bg-card/80 backdrop-blur-sm sticky top-0 z-10">
+    <header className="border-b border-border bg-card/80 backdrop-blur-sm sticky top-0 z-10 shadow-sm">
       <div className="px-6 py-4 flex items-center justify-between">
-        <div>
+        <div className="animate-fade-in-scale">
           <h1 className="text-xl font-bold text-primary">مرحباً، {user?.name}</h1>
           <p className="text-sm text-muted-foreground">
             {new Date().toLocaleDateString("ar-EG", {
@@ -41,14 +41,14 @@ export function DashboardHeader() {
           </p>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 animate-fade-in-scale">
           <NotificationBadge />
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="gap-2 h-auto py-2">
-                <Avatar className="w-9 h-9">
-                  <AvatarFallback className="bg-secondary text-secondary-foreground font-semibold">
+              <Button variant="ghost" className="gap-2 h-auto py-2 hover:bg-secondary/10 transition-all">
+                <Avatar className="w-9 h-9 ring-2 ring-secondary/20 hover:ring-secondary/40 transition-all">
+                  <AvatarFallback className="bg-gradient-to-br from-secondary to-secondary/80 text-secondary-foreground font-semibold">
                     {user ? getInitials(user.name) : "U"}
                   </AvatarFallback>
                 </Avatar>
@@ -61,12 +61,15 @@ export function DashboardHeader() {
             <DropdownMenuContent align="end" className="w-56">
               <DropdownMenuLabel>حسابي</DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>
+              <DropdownMenuItem className="hover:bg-secondary/10 transition-colors">
                 <User className="ml-2 h-4 w-4" />
                 <span>الملف الشخصي</span>
               </DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem onClick={logout} className="text-destructive focus:text-destructive">
+              <DropdownMenuItem
+                onClick={logout}
+                className="text-destructive focus:text-destructive hover:bg-destructive/10 transition-colors"
+              >
                 <LogOut className="ml-2 h-4 w-4" />
                 <span>تسجيل الخروج</span>
               </DropdownMenuItem>

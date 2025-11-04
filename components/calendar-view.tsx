@@ -99,15 +99,25 @@ export function CalendarView({ onDateSelect, selectedDate }: CalendarViewProps) 
   }
 
   return (
-    <Card className="p-6 border-primary/20 bg-card/90 backdrop-blur-sm">
+    <Card className="p-6 border-primary/20 bg-card/90 backdrop-blur-sm hover:shadow-xl transition-all duration-300">
       <div className="flex items-center justify-between mb-6">
-        <Button variant="ghost" size="icon" onClick={nextMonth}>
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={nextMonth}
+          className="hover:bg-secondary/20 hover:text-secondary transition-all"
+        >
           <ChevronRight className="w-5 h-5" />
         </Button>
-        <h2 className="text-xl font-bold text-primary">
+        <h2 className="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
           {monthNames[month]} {year}
         </h2>
-        <Button variant="ghost" size="icon" onClick={previousMonth}>
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={previousMonth}
+          className="hover:bg-secondary/20 hover:text-secondary transition-all"
+        >
           <ChevronLeft className="w-5 h-5" />
         </Button>
       </div>

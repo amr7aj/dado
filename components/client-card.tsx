@@ -25,31 +25,34 @@ export function ClientCard({ client, appointmentCount, onEdit, onDelete, onViewD
   }
 
   return (
-    <Card className="border-primary/20 bg-card/90 backdrop-blur-sm hover:shadow-lg transition-all duration-300 group">
-      <CardContent className="p-6">
+    <Card className="border-primary/20 bg-card/90 backdrop-blur-sm hover-lift hover:border-primary/30 transition-all duration-300 group overflow-hidden relative animate-fade-in-scale">
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      <CardContent className="p-6 relative z-10">
         <div className="flex items-start gap-4">
-          <div className="w-14 h-14 bg-secondary rounded-full flex items-center justify-center flex-shrink-0 text-secondary-foreground font-bold text-lg">
+          <div className="w-14 h-14 bg-gradient-to-br from-secondary to-secondary/80 rounded-full flex items-center justify-center flex-shrink-0 text-secondary-foreground font-bold text-lg shadow-lg group-hover:scale-110 transition-transform duration-300">
             {getInitials(client.name)}
           </div>
 
           <div className="flex-1 min-w-0">
-            <h3 className="text-lg font-semibold text-primary mb-1 truncate">{client.name}</h3>
+            <h3 className="text-lg font-semibold text-primary mb-1 truncate group-hover:text-secondary transition-colors">
+              {client.name}
+            </h3>
 
             <div className="space-y-2 mb-3">
-              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <div className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors">
                 <Phone className="w-4 h-4 flex-shrink-0" />
                 <span className="truncate">{client.phone}</span>
               </div>
 
               {client.email && (
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <div className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors">
                   <Mail className="w-4 h-4 flex-shrink-0" />
                   <span className="truncate">{client.email}</span>
                 </div>
               )}
 
               {client.caseNumber && (
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <div className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors">
                   <FileText className="w-4 h-4 flex-shrink-0" />
                   <span className="truncate">قضية: {client.caseNumber}</span>
                 </div>
@@ -57,7 +60,10 @@ export function ClientCard({ client, appointmentCount, onEdit, onDelete, onViewD
             </div>
 
             <div className="flex items-center gap-2 mb-4">
-              <Badge variant="outline" className="bg-primary/10 text-primary border-primary/20">
+              <Badge
+                variant="outline"
+                className="bg-primary/10 text-primary border-primary/20 hover:bg-primary/20 transition-colors"
+              >
                 {appointmentCount} موعد
               </Badge>
             </div>
@@ -67,18 +73,28 @@ export function ClientCard({ client, appointmentCount, onEdit, onDelete, onViewD
             )}
 
             <div className="flex gap-2">
-              <Button size="sm" variant="outline" onClick={() => onViewDetails(client)} className="flex-1">
+              <Button
+                size="sm"
+                variant="outline"
+                onClick={() => onViewDetails(client)}
+                className="flex-1 hover:bg-primary/10 hover:text-primary hover:border-primary/30 transition-all"
+              >
                 <User className="w-4 h-4 ml-2" />
                 التفاصيل
               </Button>
-              <Button size="sm" variant="outline" onClick={() => onEdit(client)}>
+              <Button
+                size="sm"
+                variant="outline"
+                onClick={() => onEdit(client)}
+                className="hover:bg-secondary/10 hover:text-secondary hover:border-secondary/30 transition-all"
+              >
                 <Edit className="w-4 h-4" />
               </Button>
               <Button
                 size="sm"
                 variant="outline"
                 onClick={() => onDelete(client.id)}
-                className="text-destructive hover:text-destructive"
+                className="text-destructive hover:text-destructive hover:bg-destructive/10 hover:border-destructive/30 transition-all"
               >
                 <Trash2 className="w-4 h-4" />
               </Button>
